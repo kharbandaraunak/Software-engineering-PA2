@@ -5,30 +5,30 @@
 }
 
 .new-movie {
-    max-width: 500px; /* Max width for the form */
-    padding: 15px; /* Padding for the form */
-    background-color: #fff; /* White background */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 5px; /* Slightly rounded corners */
+    max-width: 500px;
+    padding: 15px; 
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
 }
 
 .new-movie .each-detail {
-    margin-bottom: 15px; /* Space between input groups */
+    margin-bottom: 15px;
 }
 
 .new-movie .each-detail label {
     color: #BD8E8E;
-    display: block; /* Block display for labels */
-    font-weight: normal; /* Normal weight for labels */
-    margin-bottom: 5px; /* Space between label and input */
+    display: block; 
+    font-weight: normal; 
+    margin-bottom: 5px; 
 }
 
 .new-movie .each-detail input[type="text"],
 .new-movie .each-detail input[type="number"] {
     color: #B4BFB7;
-    width: 95%; /* Full width inputs */
-    padding: 8px; /* Padding for input */
-    border: 1px solid #aaa; /* Light border */
-    border-radius: 3px; /* Slightly rounded corners */
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #aaa; 
+    border-radius: 3px; 
 }
 
