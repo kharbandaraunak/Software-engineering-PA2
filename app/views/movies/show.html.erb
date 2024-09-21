@@ -1,10 +1,16 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'show' %>
+<% end %>
+
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+<div class="movie-details">
+  <%= render @movie %>
+</div>
 
 <div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-
+  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "edit-link" %> |
+  <%= link_to "Back to movies", movies_path(sort: session[:sort], direction: session[:direction]) %>
+  
   <%= button_to "Destroy this movie", @movie, method: :delete %>
 </div>

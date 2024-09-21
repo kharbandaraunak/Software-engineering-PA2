@@ -1,8 +1,14 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'new' %>
+<% end %>
+
 <% content_for :title, "New movie" %>
 
-<h1>New movie</h1>
+<h1 class="heading">New movie</h1>
 
-<%= render "form", movie: @movie %>
+<div class="new-movie">
+  <%= render "form", movie: @movie %>
+</div>
 
 <br>
 

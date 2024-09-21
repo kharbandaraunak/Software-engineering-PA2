@@ -1,16 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="movie-heading">Movies</h1>
 
-<% content_for :title, "Movies" %>
+<table>
+  <thead>
+    <tr>
+      <th><%= sort_col "title", "Title" %></th>
+      <th><%= sort_col "rating", "Rating" %></th>
+      <th><%= sort_col "release_date", "Release Date" %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date %></td>
+        <td><%= link_to "Show", movie_path(movie, sort: session[:sort], direction: session[:direction]) %></td>      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h1>Movies</h1>
-
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New movie", new_movie_path %>
+<%= link_to "New movie", new_movie_path(sort: params[:sort], direction: params[:direction]) %>

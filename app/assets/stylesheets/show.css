@@ -1,0 +1,27 @@
+.movie-details {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.movie-details .title {
+    font-size: 2rem;
+    color: #AB8EBD;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.movie-details .rating {
+    color: #64B4E3;
+    font-weight: bold; 
+}
+
+.movie-details .description {
+    color: #64B4E3; 
+}
+
+.movie-details .release {
+    color: #64B4E3; 
+}

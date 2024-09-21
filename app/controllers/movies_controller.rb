@@ -1,9 +1,15 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :set_sorting_params, only: %i[index show]
 
-  # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    # @movies = Movie.all
+    session[:sort] = params[:sort] || session[:sort] || 'title'
+    session[:direction] = params[:direction] || session[:direction] || 'asc'
+
+    session[:direction] = 'asc' unless %w[asc desc].include?(session[:direction])
+
+    @movies = Movie.order("#{session[:sort]} #{session[:direction]}")
   end
 
   # GET /movies/1 or /movies/1.json
@@ -25,7 +31,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: "Movie was successfully created." }
+        format.html { redirect_to movie_path(@movie, sort: session[:sort], direction: session[:direction]), notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +44,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: "Movie was successfully updated." }
+        format.html { redirect_to movie_path(@movie, sort: session[:sort], direction: session[:direction]), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,6 +67,12 @@ class MoviesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
+    end
+
+    def set_sorting_params
+      session[:sort] = params[:sort] || session[:sort] || 'title'
+      session[:direction] = params[:direction] || session[:direction] || 'asc'
+      session[:direction] = 'asc' unless %w[asc desc].include?(session[:direction])
     end
 
     # Only allow a list of trusted parameters through.
